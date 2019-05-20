@@ -55,10 +55,11 @@ with open('clubhouse conversion.csv', mode='w') as csv_file:
 
     writer.writeheader()
 
-    for _id in story_ids:
+    for (count, _id) in enumerate(story_ids):
         url = f'https://api.clubhouse.io/api/v2/stories/{_id}?token={token}'
         resp = requests.get(url)
         writer.writerow(resp.json())
+        print(f'Story {count} successfully added')
 
 
 
