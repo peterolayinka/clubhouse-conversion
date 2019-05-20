@@ -11,6 +11,7 @@ with open('Clubhouse Backlog - clubhouseBacklog.csv') as story_file:
     story_ids = [x[1] for x in csv_reader][1:]
 
 
+# get stories from clubhose and convert to csv
 with open('clubhouse conversion.csv', mode='w') as csv_file:
     fieldnames = [
         'entity_type',
@@ -58,8 +59,12 @@ with open('clubhouse conversion.csv', mode='w') as csv_file:
     for (count, _id) in enumerate(story_ids):
         url = f'https://api.clubhouse.io/api/v2/stories/{_id}?token={token}'
         resp = requests.get(url)
-        writer.writerow(resp.json())
+        if resp.status_code == 404:
+            message = resp.json().get('message')
+            writer.writerow({
+                'entity_type': message
+            })
+            print(message)
+        else:
+            writer.writerow(resp.json())
         print(f'Story {count} successfully added')
-
-
-

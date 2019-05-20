@@ -2,3 +2,5 @@ venv
 .vscode
 .DS_Store
 startup.sh
+clubhouse conversion.csv
+Clubhouse Backlog - clubhouseBacklog.csv
