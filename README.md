@@ -1,5 +1,5 @@
 ## Description
-This script is used to convert clubhouse story to csv
+This script is used to convert clubhouse stories to csv
 
 ## Installation/Usage
 - include clubhouse backlog file and reference appropriately in `conversion.py`
